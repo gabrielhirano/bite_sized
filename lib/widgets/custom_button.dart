@@ -7,6 +7,7 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.icon,
     required this.text,
+    required this.onPressed
   });
 
   final Icon icon;
@@ -30,7 +31,7 @@ class CustomButton extends StatelessWidget {
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
                 backgroundColor: Color.fromARGB(255, 255, 255, 255)),
-            onPressed: () {},
+            onPressed: onPressed,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [

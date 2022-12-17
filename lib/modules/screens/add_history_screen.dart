@@ -2,10 +2,10 @@ import 'package:bite_sized/modules/models/Storage.dart';
 import 'package:bite_sized/persistents/LoggedUser.dart';
 import 'package:bite_sized/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
-import 'package:file_picker/file_picker.dart';
+// import 'package:flutter/src/widgets/framework.dart';
+// import 'package:flutter/src/widgets/placeholder.dart';
+// import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+// import 'package:file_picker/file_picker.dart';
 
 class AddHistory extends StatefulWidget {
   const AddHistory({super.key});
@@ -33,7 +33,7 @@ class _AddHistoryState extends State<AddHistory> {
         child: Column(
           children: [
             _buildHeader(),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             _buildBody()
@@ -44,66 +44,63 @@ class _AddHistoryState extends State<AddHistory> {
   }
 
   Widget _buildHeader() {
-    final Storage storage = Storage();
-    var imagePath;
     return Column(
       children: [
+        Image.network(
+          'https://th.bing.com/th/id/OIP.GMFIR_fiNa4eDqfDV4gx7QHaE6?pid=ImgDet&rs=1',
+          height: MediaQuery.of(context).size.height * 0.3,
+          width: double.infinity,
+          fit: BoxFit.cover,
+        ),
+
         // Container(
-        //   child: Image.network(
-        //     'https://th.bing.com/th/id/OIP.GMFIR_fiNa4eDqfDV4gx7QHaE6?pid=ImgDet&rs=1',
-        //     height: MediaQuery.of(context).size.height * 0.3,
-        //     width: double.infinity,
-        //     fit: BoxFit.cover,
+        //   child: GestureDetector(
+        //     onTap: () async {
+        //       final results = await FilePicker.platform.pickFiles(
+        //           allowMultiple: false,
+        //           type: FileType.custom,
+        //           allowedExtensions: ['png', 'jpg']);
+
+        //       if (results == null) {
+        //         ScaffoldMessenger.of(context).showSnackBar(
+        //             const SnackBar(content: Text('No file selected')));
+        //         return null;
+        //       }
+
+        //       final path = results.files.single.path;
+        //       final fileName = results.files.single.name;
+
+        //       storage.uploadFile(path!, fileName).then((value) => setState(() {
+        //             print('-------------');
+        //             print(fileName);
+        //             imagePath = fileName;
+        //             //backgroundDefault = false;
+        //           }));
+        //     },
+        //     child: FutureBuilder(
+        //         //A URL dentro de downloadUrl é mostrada na tela
+        //         future: storage.donwloadUrl(imagePath),
+        //         builder:
+        //             (BuildContext context, AsyncSnapshot<String> snapshot) {
+        //           if (snapshot.connectionState == ConnectionState.done &&
+        //               snapshot.hasData) {
+        //             return Container(
+        //               width: double.infinity,
+        //               height: 200,
+        //               child: Image.network(
+        //                 snapshot.data!,
+        //                 fit: BoxFit.cover,
+        //               ),
+        //             );
+        //           }
+        //           if (snapshot.connectionState == ConnectionState.waiting ||
+        //               !snapshot.hasData) {
+        //             return CircularProgressIndicator();
+        //           }
+        //           return Container();
+        //         }),
         //   ),
         // ),
-        Container(
-          child: GestureDetector(
-            onTap: () async {
-              final results = await FilePicker.platform.pickFiles(
-                  allowMultiple: false,
-                  type: FileType.custom,
-                  allowedExtensions: ['png', 'jpg']);
-
-              if (results == null) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('No file selected')));
-                return null;
-              }
-
-              final path = results.files.single.path;
-              final fileName = results.files.single.name;
-
-              storage.uploadFile(path!, fileName).then((value) => setState(() {
-                    print('-------------');
-                    print(fileName);
-                    imagePath = fileName;
-                    //backgroundDefault = false;
-                  }));
-            },
-            child: FutureBuilder(
-                //A URL dentro de downloadUrl é mostrada na tela
-                future: storage.donwloadUrl(imagePath),
-                builder:
-                    (BuildContext context, AsyncSnapshot<String> snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done &&
-                      snapshot.hasData) {
-                    return Container(
-                      width: double.infinity,
-                      height: 200,
-                      child: Image.network(
-                        snapshot.data!,
-                        fit: BoxFit.cover,
-                      ),
-                    );
-                  }
-                  if (snapshot.connectionState == ConnectionState.waiting ||
-                      !snapshot.hasData) {
-                    return CircularProgressIndicator();
-                  }
-                  return Container();
-                }),
-          ),
-        ),
         Container(
           decoration: BoxDecoration(
               color: Colors.black,
@@ -168,7 +165,7 @@ class _AddHistoryState extends State<AddHistory> {
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context)
                               .textTheme
-                              .bodyText2!
+                              .bodyMedium!
                               .copyWith(
                                   fontSize: 20,
                                   fontFamily: 'Inter',
@@ -193,15 +190,15 @@ class _AddHistoryState extends State<AddHistory> {
             padding: EdgeInsetsDirectional.symmetric(horizontal: 28),
             child: Column(children: [
               _buildTitleArea(),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               _buildDescricaoArea(),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               _buildButtonCadastrar(),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
             ]))
@@ -249,10 +246,10 @@ class _AddHistoryState extends State<AddHistory> {
   }
 
   _buildMensagemTextField() {
-    return Container(
+    return SizedBox(
       height: 200,
       child: TextField(
-        scrollPadding: EdgeInsets.all(2),
+        scrollPadding: const EdgeInsets.all(2),
         controller: descriptionController,
         textAlign: TextAlign.start,
         textAlignVertical: TextAlignVertical.top,
@@ -282,6 +279,9 @@ class _AddHistoryState extends State<AddHistory> {
         size: 24.0,
         color: Colors.black,
       ),
+      onPressed: (){
+        print('Postando aqui........');
+      },
     );
   }
 }

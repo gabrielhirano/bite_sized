@@ -6,6 +6,7 @@ class ApiPath {
   static String get login => '';
   static String get cadastro => '';
 
+  static String get baseImageProfile => 'https://avatars.dicebear.com/api/bottts/';
   static List<dynamic> get historias => historiaList.map((historia) => historia.toJson()).toList();
   static String get comentarios => '';
 

@@ -1,5 +1,6 @@
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:bite_sized/modules/screens/login_screen.dart';
+import 'package:bite_sized/modules/screens/profile_screen.dart';
 import 'package:bite_sized/utils/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -19,10 +20,10 @@ import 'modules/screens/main_screen.dart';
 // import 'package:file_picker/file_picker.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  //WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
   runApp(MyApp());
 }
 
@@ -45,8 +46,9 @@ class MyApp extends StatelessWidget {
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(
               selectedItemColor: Colors.white)),
       // correto :home: checkLogged() ? NavScreen() : RegisterScreen(),
-      home: const MainScreen(),
+      // home: const MainScreen(),
       //home: LoginScreen(),
+      home : const ProfileScreen(),
     );
   }
 }
